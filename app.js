@@ -16,16 +16,12 @@ let operator = '';
 const handleEquals = (event) => {
     switch(operator){
         case '/':
-            console.log(input)
-            console.log(total)
             displayElement.innerText = total / input;
             break;
         case '*':
             displayElement.innerText = input * total;
             break;
         case '-':
-            console.log(input)
-            console.log(total)
             displayElement.innerText = total - input;
             break;
         case '+':
@@ -42,7 +38,9 @@ const handleEquals = (event) => {
 const handleOperator = (event) => {
     if(event.target.innerText == 'C'){
         displayElement.innerText = '';
+        input = 0;
         total = 0;
+        operator = '';
     }else if(operator == ''){
         operator = event.target.innerText;
         total = input;
