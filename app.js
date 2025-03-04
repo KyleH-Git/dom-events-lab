@@ -16,33 +16,39 @@ let operator = '';
 const handleEquals = (event) => {
     switch(operator){
         case '/':
-            displayElement.innerText = input / total;
+            console.log(input)
+            console.log(total)
+            displayElement.innerText = total / input;
             break;
         case '*':
             displayElement.innerText = input * total;
             break;
         case '-':
-            displayElement.innerText = input - total;
+            console.log(input)
+            console.log(total)
+            displayElement.innerText = total - input;
             break;
         case '+':
             displayElement.innerText = input*1 + total*1;
             break;
         default:
             break;
-
     }
+    input = 0;
+    total = 0;
+    operator = '';
 }
 
 const handleOperator = (event) => {
-    operator = event.target.innerText;
-    console.log(operator)
-    total = input;
-    input = 0;
-    displayElement.innerText = operator;
     if(event.target.innerText == 'C'){
         displayElement.innerText = '';
         total = 0;
-    }
+    }else if(operator == ''){
+        operator = event.target.innerText;
+        total = input;
+        input = 0;
+        displayElement.innerText = operator;
+    }  
 }
 
 const handleNumber = (event) => {
@@ -54,19 +60,9 @@ const handleNumber = (event) => {
         } else {
         input += event.target.innerText;
         displayElement.innerText = input;
-        if(total == 0){
-            total = event.target.innerText;
-        } else if(operator !== ''){
-            if(operator == '+'){
-                total += event.target.innerText;
-                console.log(total)
-            }
-            if(operator == '='){
-                displayElement.innerText = total;
-            }
         }
     }
-}
+
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -80,3 +76,5 @@ for(let button of buttons){
         button.addEventListener('click', handleEquals);
     }
 }
+
+
